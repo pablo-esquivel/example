@@ -3,7 +3,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com"> 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        h2{
+      h2{
         font-family: roboto;
         color: white;
         font-size: 25px;
@@ -11,16 +11,17 @@
         font-weight: 500;
         padding: 60px;
         margin: 0 auto;
-        }
+      }
 
-        .box{
+      .box{
         background-color: black;
         width: 830px;
         height: 352px;
         margin: 150px auto;
-        }
+        box-shadow: 0 0 40px grey;
+      }
 
-        p.notsure{
+      p.notsure{
         height: 25px;
         width: 100px;
         font-family: roboto;
@@ -33,13 +34,16 @@
         padding: 15px 45px;
         margin: 15px auto;
         display: block;
-        }
-        p.notsure:hover{
+        position: relative;
+        left: 0px;
+        top: 0px;
+      }
+      p.notsure:hover{
         color: white;
         border: .5px solid white;
         background-color: black;
-        }
-        p.unsubscribe{
+      }
+      p.unsubscribe{
         width: 40px;
         height: 20px;
         font-family: roboto;
@@ -48,17 +52,47 @@
         font-weight: 400;
         color: grey;
         text-decoration: none;
-        padding: 30px 45px;
-        margin: 0 328px;
-        }
-        p.unsubscribe:hover{
+        padding: 30px 0px;
+        position: relative;
+        top: 0;
+        left: 0;
+        opacity: 1.0;
+      }
+      p.unsubscribe:hover{
         color: black;
-        }
+      }
     </style>
-    <div class=box>
-  <h2>Are you sure you want to unsubscribe from our <br>mailing list?</h2>
-  <p class='notsure'>Not Sure</p>
-  <p class='unsubscribe' >Unsubscribe</p>
-    </div>
+    
+
+  <div class=box>
+    <h2>Are you sure you want to unsubscribe from our <br>mailing list?</h2>
+    <p class='notsure'>Not Sure</p>
+    <p class='unsubscribe' >Unsubscribe</p>
+  </div>
+
+  <script>
+    var hover = false;
+    var x;
+    var y;
+    var mouse = document.querySelector('.mouse-location');
+    let btn = document.querySelector('.unsubscribe');
+
+
+    window.addEventListener("mousemove", function(event){
+      x = event.clientX;
+      y = event.clientY;
+      console.log(y);
+
+    if(x < 1025 && x > 300 && y > 400 && y < 500){
+        btn.style.left = (x-290) + "px";
+      btn.style.top = (y*.05) + "px";
+      btn.style.opacity = '1.0';
+    }
+      else{
+        btn.style.opacity = '0.0';
+        btn.style.top = 0 + 'px';
+      }
+    } );
+  </script>
 </html>
 
